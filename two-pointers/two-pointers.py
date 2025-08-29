@@ -43,7 +43,7 @@ class Solution:
 
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         # Given an array of sorted nums and we have to find two that sum to target
-        left, right = 0, len(numbers) - 1
+        left, right  = 0, len(numbers) - 1
 
         # If the pointers meet, the sum doesn't exist
         while left < right:
@@ -59,7 +59,7 @@ class Solution:
             
         # If we get to this point, sum doesn't exist
         # Not strictly necessary for this question, but still good practice
-        return 0
+        return [0]
     
     # Algorithm runs in O(n) time and O(1) space
 
