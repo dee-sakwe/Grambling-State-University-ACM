@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Tuple, Optional
 
 
 class ListNode:
@@ -167,7 +167,7 @@ class MyHashMap:
         print(myHashMap)
 
 
-def maxDepth(self, root: Optional[TreeNode]) -> int:
+def maxDepth(root: Optional[TreeNode]) -> int:
     """
     Given the `root` of a binary tree, return its maximum depth.
 
@@ -188,8 +188,50 @@ def maxDepth(self, root: Optional[TreeNode]) -> int:
         The number of nodes in the tree is in the range `[0, 10⁴]`.
         `-100 <= Node.val <= 100`
     """
+    # Recursive solution
+    # if not root:
+    #     return 0
 
-    return 1
+    # return 1 + max(maxDepth(root.left), maxDepth(root.right))
 
+    # BFS solution
 
-def rest(myList: List[int]) -> None: ...
+    # from collections import deque
+
+    # if not root:
+    #     return 0
+
+    # q = deque([root])
+
+    # level = 0
+
+    # while q:
+    #     for i in range(len(q)):
+    #         node = q.popleft()
+
+    #         if node.left:
+    #             q.append(node.left)
+
+    #         if node.right:
+    #             q.append(node.right)
+
+    #     level += 1
+
+    # return level
+
+    # Iterative DFS
+
+    stack: List[Tuple[TreeNode | None, int]] = [(root, 1)]
+
+    depth = 0
+
+    while stack:
+        node, level = stack.pop()
+
+        if node:
+            depth = max(depth, level)
+            stack.append((node.left, level + 1))
+            stack.append((node.right, level + 1))
+
+    return depth
+
